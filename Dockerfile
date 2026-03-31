@@ -1,5 +1,5 @@
 # Ubuntu 14.04 LTS
-FROM phusion/baseimage:0.9.18
+FROM phusion/baseimage:noble
 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -53,7 +53,7 @@ RUN a2enmod headers \
 # create the configuration file in the "available" section
 RUN echo "ServerName localhost" | tee /etc/apache2/conf-available/servername.conf
 # enable it by creating a symlink to it from the "enabled" section
-RUN sudo a2enconf servername
+RUN a2enconf servername
 
 RUN mkdir -p /etc/service/apache
 ADD apache-init.sh /etc/service/apache/run
